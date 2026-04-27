@@ -1,0 +1,42 @@
+/* 1. 載入 Tailwind CSS v4 核心引擎 */
+@import "tailwindcss";
+
+/* 2. TJCDaxi iMac 系統基礎樣式設定 */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /* 使用淺灰色背景，讓藍色介面更立體 */
+  background-color: #f8fafc; 
+  min-height: 100vh;
+}
+
+/* 3. 確保 React 容器撐滿螢幕 */
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/* 4. 自定義捲軸樣式 (讓介面更像 Mac 質感) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
