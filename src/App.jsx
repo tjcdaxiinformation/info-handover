@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { 
   Users, FileText, Archive, ShieldCheck, Plus, Search, 
   ExternalLink, Clock, FolderTree, AlertCircle, Home, 
   BookOpen, Settings, Monitor, Bell, Megaphone, ChevronRight,
-  Database, LayoutGrid, Fingerprint, Command
+  Database, LayoutGrid, Fingerprint, Command, X
 } from 'lucide-react';
 
 // 從 data.js 匯入資料
@@ -48,83 +48,134 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('overview');
   const [searchTerm, setSearchTerm] = useState('');
 
+  // 實作搜尋過濾邏輯
+  const filteredGroups = useMemo(() => {
+    return GROUPS_DATA.filter(g => 
+      g.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      g.leader.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [searchTerm]);
+
   const renderContent = () => {
     switch(activeTab) {
       case 'overview':
         return (
           <div className="space-y-6">
             {/* 1. 最新消息公告 */}
-            <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 rounded-2xl p-6 text-white shadow-xl">
-              <div className="flex items-center space-x-2 mb-4">
-                <Megaphone size={18} className="text-blue-200" />
-                <h2 className="text-sm font-black tracking-widest uppercase text-blue-100">最新消息公告</h2>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10">
-                  <div className="text-[10px] font-bold text-blue-200 uppercase mb-1 flex items-center">
-                    <Bell size={10} className="mr-1" /> 最新收文
-                  </div>
-                  <p className="text-sm font-semibold truncate">{NEWS_DATA.receivedDoc}</p>
+            <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+              <div className="relative z-10">
+                <div className="flex items-center space-x-2 mb-6">
+                  <Megaphone size={20} className="text-blue-200" />
+                  <h2 className="text-xs font-black tracking-[0.2em] uppercase text-blue-100">Latest Notifications / 最新消息</h2>
                 </div>
-                <div className="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10">
-                  <div className="text-[10px] font-bold text-blue-200 uppercase mb-1 flex items-center">
-                    <Clock size={10} className="mr-1" /> 最新會議記錄
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-white/10 backdrop-blur-xl p-5 rounded-2xl border border-white/20 hover:bg-white/15 transition-colors">
+                    <div className="text-[10px] font-bold text-blue-200 uppercase mb-2 flex items-center">
+                      <Bell size={12} className="mr-1.5" /> 最新收文公告
+                    </div>
+                    <p className="text-base font-bold leading-tight">{NEWS_DATA.receivedDoc}</p>
                   </div>
-                  <p className="text-sm font-semibold truncate">{NEWS_DATA.meeting}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* 2. 大型搜尋列區塊 (新功能) */}
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-25 group-focus-within:opacity-50 transition duration-1000"></div>
-              <div className="relative bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                <div className="flex items-center space-x-4">
-                  <div className="bg-blue-50 p-3 rounded-xl text-blue-600">
-                    <Search size={24} />
-                  </div>
-                  <div className="flex-1">
-                    <input 
-                      type="text" 
-                      placeholder="搜尋交接資料、規章或雲端連結..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full text-lg font-medium text-gray-800 placeholder:text-gray-300 focus:outline-none"
-                    />
-                  </div>
-                  <div className="hidden md:flex items-center space-x-1 text-gray-400 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">
-                    <Command size={12} />
-                    <span className="text-[10px] font-bold">K</span>
+                  <div className="bg-white/10 backdrop-blur-xl p-5 rounded-2xl border border-white/20 hover:bg-white/15 transition-colors">
+                    <div className="text-[10px] font-bold text-blue-200 uppercase mb-2 flex items-center">
+                      <Clock size={12} className="mr-1.5" /> 近期會議決議
+                    </div>
+                    <p className="text-base font-bold leading-tight">{NEWS_DATA.meeting}</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* 3. 系統資訊卡片 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-8 bg-white rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-center">
-                <div className="flex items-center space-x-3 mb-2">
-                  <Monitor className="text-blue-600" size={28} />
-                  <h2 className="text-2xl font-bold text-gray-800">TJCDaxi iMac 資訊股交接總覽</h2>
+            {/* 2. 大型搜尋列區塊 - 這裡就是您要找的搜尋列 */}
+            <div className="relative group max-w-4xl mx-auto w-full pt-4">
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-600 rounded-3xl blur opacity-20 group-focus-within:opacity-40 transition duration-1000"></div>
+              <div className="relative bg-white p-2 rounded-[24px] border border-gray-100 shadow-xl flex items-center">
+                <div className="pl-6 pr-4 text-blue-600">
+                  <Search size={24} />
                 </div>
-                <p className="text-gray-500 text-sm italic">「凡事都要規規矩矩地按著次序行。」 — 林前 14:40</p>
+                <input 
+                  type="text" 
+                  placeholder="搜尋負責人、組別名稱或交接項目..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="flex-1 py-4 text-lg font-medium text-gray-800 placeholder:text-gray-300 focus:outline-none"
+                />
+                {searchTerm && (
+                  <button onClick={() => setSearchTerm('')} className="p-2 mr-2 text-gray-300 hover:text-gray-600">
+                    <X size={20} />
+                  </button>
+                )}
+                <div className="hidden md:flex items-center space-x-1.5 text-gray-400 bg-gray-50 px-4 py-2 rounded-xl border border-gray-100 mr-2 font-mono">
+                  <Command size={14} />
+                  <span className="text-xs font-bold">K</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 3. 搜尋結果預覽 (當有輸入時自動顯示) */}
+            {searchTerm && (
+              <div className="bg-blue-50/50 rounded-2xl p-6 border border-blue-100 animate-in fade-in slide-in-from-top-4">
+                <h3 className="text-xs font-bold text-blue-600 uppercase mb-4 tracking-widest flex items-center">
+                  <Search size={14} className="mr-2" /> 搜尋結果："{searchTerm}"
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {filteredGroups.length > 0 ? (
+                    filteredGroups.map(g => (
+                      <div key={g.id} className="bg-white p-4 rounded-xl border border-blue-100 shadow-sm flex justify-between items-center">
+                        <div>
+                          <p className="font-bold text-gray-800">{g.name}</p>
+                          <p className="text-xs text-gray-500">{g.leader}</p>
+                        </div>
+                        <a href={g.folder} target="_blank" rel="noreferrer" className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
+                          <ExternalLink size={16} />
+                        </a>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-sm text-gray-400 py-4 italic">找不到符合的資料...</p>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* 4. 系統資訊卡片 */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-2 p-8 bg-white rounded-3xl border border-gray-100 shadow-sm flex flex-col justify-center relative overflow-hidden group">
+                <div className="absolute top-0 right-0 p-8 text-gray-50 group-hover:text-blue-50 transition-colors">
+                   <Monitor size={120} />
+                </div>
+                <div className="relative z-10">
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className="bg-blue-600 p-3 rounded-2xl text-white shadow-lg">
+                      <Monitor size={32} />
+                    </div>
+                    <h2 className="text-3xl font-black text-gray-900 tracking-tight">TJCDaxi iMac</h2>
+                  </div>
+                  <p className="text-gray-500 text-base italic leading-relaxed max-w-md">
+                    「凡事都要規規矩矩地按著次序行。」<br/>
+                    本主機為大溪教會資訊股專用開發環境，請妥善保管交接資料。
+                  </p>
+                </div>
               </div>
               
-              <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                <h3 className="font-bold mb-4 flex items-center text-gray-800 text-sm uppercase tracking-wider">
-                  <Settings size={16} className="mr-2 text-blue-600" /> 系統資訊 (Host Info)
+              <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col justify-between">
+                <h3 className="font-bold flex items-center text-gray-800 text-sm uppercase tracking-widest mb-6">
+                  <Settings size={18} className="mr-3 text-blue-600" /> 系統運行狀態
                 </h3>
-                <div className="space-y-3 text-sm">
-                  <div className="flex justify-between py-2 border-b border-gray-50">
-                    <span className="text-gray-500">主機</span>
-                    <span className="font-bold text-blue-700">TJCDaxi iMac</span>
-                  </div>
-                  <div className="flex justify-between py-2 border-b border-gray-50">
-                    <span className="text-gray-500">同步狀態</span>
-                    <span className="text-green-600 font-bold flex items-center">
+                <div className="space-y-4">
+                  <div className="flex justify-between items-end">
+                    <span className="text-gray-400 text-xs font-bold uppercase">Cloud Sync</span>
+                    <span className="text-green-600 font-black text-sm flex items-center">
                       <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
-                      ONLINE
+                      CONNECTED
                     </span>
+                  </div>
+                  <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                    <div className="h-full bg-blue-600 w-full"></div>
+                  </div>
+                  <div className="flex justify-between items-end pt-2">
+                    <span className="text-gray-400 text-xs font-bold uppercase">Version</span>
+                    <span className="font-mono text-gray-900 font-bold bg-gray-50 px-3 py-1 rounded-lg border border-gray-100">v3.3.5-LTS</span>
                   </div>
                 </div>
               </div>
@@ -238,48 +289,54 @@ export default function App() {
 
   return (
     <div className="flex h-screen bg-gray-50 text-gray-900 font-sans selection:bg-blue-100">
-      <aside className="w-64 bg-white border-r border-gray-200 p-6 flex flex-col shadow-sm">
-        <div className="flex items-center space-x-3 px-2 mb-10">
-          <div className="bg-blue-700 p-2 rounded-xl text-white shadow-lg shadow-blue-100">
-            <Monitor size={20} />
+      <aside className="w-64 bg-white border-r border-gray-200 p-8 flex flex-col shadow-sm">
+        <div className="flex items-center space-x-3 px-2 mb-12">
+          <div className="bg-blue-700 p-2.5 rounded-[14px] text-white shadow-xl shadow-blue-200">
+            <Monitor size={22} />
           </div>
           <div>
-            <h1 className="text-sm font-black text-gray-900 leading-none">TJCDaxi / Info</h1>
-            <span className="text-[10px] text-blue-600 uppercase font-bold tracking-widest">資訊股交接系統</span>
+            <h1 className="text-sm font-black text-gray-900 leading-none tracking-tight">TJCDaxi / Info</h1>
+            <span className="text-[9px] text-blue-600 uppercase font-black tracking-[0.2em] mt-1 block">資訊股交接系統</span>
           </div>
         </div>
         
-        <nav className="space-y-1.5 flex-1 text-sm font-medium">
+        <nav className="space-y-1.5 flex-1 text-sm font-semibold">
           <SidebarItem id="overview" icon={Home} label="主機總覽" activeTab={activeTab} onClick={setActiveTab} />
-          <div className="pt-6 pb-2 px-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">交接規章分區</div>
+          <div className="pt-8 pb-3 px-4 text-[10px] font-black text-gray-300 uppercase tracking-[0.2em]">交接規章分區</div>
           <SidebarItem id="groups" icon={Users} label="01 組織組別" activeTab={activeTab} onClick={setActiveTab} />
           <SidebarItem id="membership" icon={FileText} label="02 會籍管理" activeTab={activeTab} onClick={setActiveTab} />
           <SidebarItem id="documents" icon={Archive} label="03 公文會議" activeTab={activeTab} onClick={setActiveTab} />
           <SidebarItem id="assets" icon={ShieldCheck} label="04 財產印信" activeTab={activeTab} onClick={setActiveTab} />
         </nav>
+
+        <div className="mt-auto pt-8">
+          <a href="https://drive.google.com/drive/folders/1oORI6DgGjfS_MipKnK9-o8D53apOXjV8" target="_blank" rel="noreferrer" className="flex items-center justify-center space-x-2 text-[11px] font-black uppercase tracking-widest text-blue-600 bg-blue-50 py-4 rounded-2xl border border-blue-100 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-sm shadow-blue-50">
+            <FolderTree size={16} /><span>開啟主雲端</span>
+          </a>
+        </div>
       </aside>
 
-      <div className="flex-1 overflow-auto bg-[#F8FAFC]">
-        <header className="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-10 px-8 py-4 flex justify-between items-center text-sm font-bold">
-          <div className="flex items-center space-x-2">
-            <span className="text-gray-400 font-medium">Repository</span>
-            <span className="text-gray-400">/</span>
+      <div className="flex-1 overflow-auto bg-[#F8FAFC] flex flex-col">
+        <header className="bg-white/80 backdrop-blur-xl border-b border-gray-100 sticky top-0 z-50 px-10 py-5 flex justify-between items-center">
+          <div className="flex items-center space-x-3 text-sm font-bold">
+            <span className="text-gray-300 font-medium">Main Repository</span>
+            <span className="text-gray-300 font-medium">/</span>
             <span className="text-gray-900 uppercase tracking-tighter">{activeTab}</span>
           </div>
           
           <div className="relative group">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-blue-500" size={14} />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-blue-500 transition-colors" size={16} />
             <input
               type="text"
-              placeholder="快速搜尋..."
+              placeholder="快速過濾..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-9 pr-4 py-1.5 bg-gray-50 border border-gray-200 rounded-lg text-[10px] w-48 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:bg-white transition-all"
+              className="pl-11 pr-5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs w-64 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:bg-white focus:border-blue-400 transition-all font-medium"
             />
           </div>
         </header>
         
-        <main className="p-8 max-w-6xl mx-auto">
+        <main className="p-10 max-w-7xl mx-auto w-full">
           {renderContent()}
         </main>
       </div>
