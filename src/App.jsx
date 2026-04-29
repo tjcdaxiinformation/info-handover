@@ -3,7 +3,7 @@ import {
   Users, FileText, Archive, ShieldCheck, Plus, Search, 
   ExternalLink, Clock, FolderTree, AlertCircle, Home, 
   BookOpen, Settings, Monitor, Bell, Megaphone, ChevronRight,
-  Database, LayoutGrid, Fingerprint
+  Database, LayoutGrid, Fingerprint, Command
 } from 'lucide-react';
 
 // 從 data.js 匯入資料
@@ -15,7 +15,7 @@ import {
   ASSETS_DATA 
 } from './data';
 
-// --- 輔助組件 ---
+// --- 輔助組件：側邊欄項目 ---
 const SidebarItem = ({ id, icon: Icon, label, activeTab, onClick }) => (
   <button
     onClick={() => onClick(id)}
@@ -30,6 +30,7 @@ const SidebarItem = ({ id, icon: Icon, label, activeTab, onClick }) => (
   </button>
 );
 
+// --- 輔助組件：頁面標題 ---
 const PageHeader = ({ title, description, icon: Icon }) => (
   <div className="mb-6 p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
     <div className="flex items-center space-x-3 mb-2">
@@ -45,16 +46,18 @@ const PageHeader = ({ title, description, icon: Icon }) => (
 // --- 主程式 ---
 export default function App() {
   const [activeTab, setActiveTab] = useState('overview');
+  const [searchTerm, setSearchTerm] = useState('');
 
   const renderContent = () => {
     switch(activeTab) {
       case 'overview':
         return (
           <div className="space-y-6">
+            {/* 1. 最新消息公告 */}
             <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 rounded-2xl p-6 text-white shadow-xl">
               <div className="flex items-center space-x-2 mb-4">
                 <Megaphone size={18} className="text-blue-200" />
-                <h2 className="text-xs font-black tracking-widest uppercase text-blue-100">最新消息公告</h2>
+                <h2 className="text-sm font-black tracking-widest uppercase text-blue-100">最新消息公告</h2>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10">
@@ -72,12 +75,59 @@ export default function App() {
               </div>
             </div>
 
-            <div className="p-8 bg-white rounded-2xl border border-gray-100 shadow-sm">
-              <div className="flex items-center space-x-3 mb-2">
-                <Monitor className="text-blue-600" size={28} />
-                <h2 className="text-2xl font-bold text-gray-800">TJCDaxi iMac 資訊股交接總覽</h2>
+            {/* 2. 大型搜尋列區塊 (新功能) */}
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-25 group-focus-within:opacity-50 transition duration-1000"></div>
+              <div className="relative bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                <div className="flex items-center space-x-4">
+                  <div className="bg-blue-50 p-3 rounded-xl text-blue-600">
+                    <Search size={24} />
+                  </div>
+                  <div className="flex-1">
+                    <input 
+                      type="text" 
+                      placeholder="搜尋交接資料、規章或雲端連結..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full text-lg font-medium text-gray-800 placeholder:text-gray-300 focus:outline-none"
+                    />
+                  </div>
+                  <div className="hidden md:flex items-center space-x-1 text-gray-400 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">
+                    <Command size={12} />
+                    <span className="text-[10px] font-bold">K</span>
+                  </div>
+                </div>
               </div>
-              <p className="text-gray-500 text-sm italic">「凡事都要規規矩矩地按著次序行。」 — 林前 14:40</p>
+            </div>
+
+            {/* 3. 系統資訊卡片 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-8 bg-white rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-center">
+                <div className="flex items-center space-x-3 mb-2">
+                  <Monitor className="text-blue-600" size={28} />
+                  <h2 className="text-2xl font-bold text-gray-800">TJCDaxi iMac 資訊股交接總覽</h2>
+                </div>
+                <p className="text-gray-500 text-sm italic">「凡事都要規規矩矩地按著次序行。」 — 林前 14:40</p>
+              </div>
+              
+              <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                <h3 className="font-bold mb-4 flex items-center text-gray-800 text-sm uppercase tracking-wider">
+                  <Settings size={16} className="mr-2 text-blue-600" /> 系統資訊 (Host Info)
+                </h3>
+                <div className="space-y-3 text-sm">
+                  <div className="flex justify-between py-2 border-b border-gray-50">
+                    <span className="text-gray-500">主機</span>
+                    <span className="font-bold text-blue-700">TJCDaxi iMac</span>
+                  </div>
+                  <div className="flex justify-between py-2 border-b border-gray-50">
+                    <span className="text-gray-500">同步狀態</span>
+                    <span className="text-green-600 font-bold flex items-center">
+                      <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+                      ONLINE
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         );
@@ -91,7 +141,9 @@ export default function App() {
                 <div key={g.id} className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all group">
                   <div className="font-bold text-gray-800 mb-1">{g.name}</div>
                   <div className="text-xs text-gray-500 mb-4">負責人：{g.leader}</div>
-                  <a href={g.folder} target="_blank" rel="noreferrer" className="block text-center py-2.5 bg-blue-50 rounded-xl text-xs font-bold text-blue-600 border border-blue-100 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all">開啟雲端目錄</a>
+                  <a href={g.folder} target="_blank" rel="noreferrer" className="block text-center py-2.5 bg-blue-50 rounded-xl text-xs font-bold text-blue-600 border border-blue-100 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all">
+                    開啟雲端目錄
+                  </a>
                 </div>
               ))}
             </div>
@@ -196,6 +248,7 @@ export default function App() {
             <span className="text-[10px] text-blue-600 uppercase font-bold tracking-widest">資訊股交接系統</span>
           </div>
         </div>
+        
         <nav className="space-y-1.5 flex-1 text-sm font-medium">
           <SidebarItem id="overview" icon={Home} label="主機總覽" activeTab={activeTab} onClick={setActiveTab} />
           <div className="pt-6 pb-2 px-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">交接規章分區</div>
@@ -213,8 +266,19 @@ export default function App() {
             <span className="text-gray-400">/</span>
             <span className="text-gray-900 uppercase tracking-tighter">{activeTab}</span>
           </div>
-          <div className="text-[10px] text-gray-400 font-mono">TJCDaxi iMac v3.2.1</div>
+          
+          <div className="relative group">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-blue-500" size={14} />
+            <input
+              type="text"
+              placeholder="快速搜尋..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-9 pr-4 py-1.5 bg-gray-50 border border-gray-200 rounded-lg text-[10px] w-48 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:bg-white transition-all"
+            />
+          </div>
         </header>
+        
         <main className="p-8 max-w-6xl mx-auto">
           {renderContent()}
         </main>
