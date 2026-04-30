@@ -3,6 +3,10 @@
  * 以後更新「網址」、「人名」、「項目」請改這裡，不要動 App.jsx
  */
 
+// 公務車回報系統連結 (請在此替換為您的 Google 表單或 Web App 網址)
+export const VEHICLE_REPORT_LINK = "https://www.appsheet.com/start/0942797a-0434-4453-bd3e-f1e43d40a950?platform=desktop#appName=OfficialvehiclesApp-274251307&vss=H4sIAAAAAAAAA6WPPU4DMRCF7zK1V9pN2J-4jSgiBA2IBqeYrMeSxcaO1l4gWvkmNBSRcgMqbgMSx8AmQamB8r3R9-nNCA-aHq89tvfA78ZTuqAtcBgF3Gw3JIALmFvje9sJYAKucH0oP15372_Pny_7QkCAsGQ_Bk8O-PhbAf_vAgZakvFaaeqTLbHRciTjOXGxOFEQGKwHj6uOvmcnSruFOZfaX1oZs-8HYuB7NA5br61ZyGjIKcdCTeqsxrrKzopZmTWyUVnVVDlOy3yyKmcQQrQr2w6O5G187E8PpTFPGzTyMEdh5yh8AamJA4a5AQAA&view=%E5%B7%A5%E4%BD%9C%E8%A1%A81"; 
+
+
 export const NEWS_DATA = {
   receivedDoc: "2026/04/27 通知舉開大畢班成長營事宜(真臺牧字第115-0137號)",
   meeting: "2026/04/22 職務會：受洗人員審查會",
