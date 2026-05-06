@@ -1,64 +1,64 @@
 /**
- * 資訊股交接系統 - 資料庫
- * 以後更新「網址」、「人名」、「項目」請改這裡，不要動 App.jsx
+ * 資訊股交接系統 - 資料庫 (2026/05/06 更新)
  */
 
-// 公務車回報系統連結 (請在此替換為您的 Google 表單或 Web App 網址)
-export const VEHICLE_REPORT_LINK = "https://www.appsheet.com/start/0942797a-0434-4453-bd3e-f1e43d40a950?platform=desktop#appName=OfficialvehiclesApp-274251307&vss=H4sIAAAAAAAAA6WPPU4DMRCF7zK1V9pN2J-4jSgiBA2IBqeYrMeSxcaO1l4gWvkmNBSRcgMqbgMSx8AmQamB8r3R9-nNCA-aHq89tvfA78ZTuqAtcBgF3Gw3JIALmFvje9sJYAKucH0oP15372_Pny_7QkCAsGQ_Bk8O-PhbAf_vAgZakvFaaeqTLbHRciTjOXGxOFEQGKwHj6uOvmcnSruFOZfaX1oZs-8HYuB7NA5br61ZyGjIKcdCTeqsxrrKzopZmTWyUVnVVDlOy3yyKmcQQrQr2w6O5G187E8PpTFPGzTyMEdh5yh8AamJA4a5AQAA&view=%E5%B7%A5%E4%BD%9C%E8%A1%A81"; 
+export const VEHICLE_REPORT_LINK = "https://forms.gle/your-google-form-url"; 
 
+// --- 本會宣布事項資料 ---
+export const CHURCH_ANNOUNCEMENTS = {
+  updateDate: "2026/05/06",
+  // 代禱名單
+  prayers: [
+    { name: "病中代禱", list: "李思親、宗福勇、李慧蘭、安月美、許甜心慕、胡秀蓮、葛秀娟、何美鳳、陳勇希、曾立學、鳳秋娥、陳桂英、陳進芳慕" },
+    { name: "傳道代禱", list: "張健二傳道(腦出血住院)、鍾清章傳道(修復重建)" },
+    { name: "聖事工", list: "全體教會牧養、福音宣道事工求主帶領" }
+  ],
+  // 近期活動日程
+  events: [
+    { date: "5/07(四)", time: "家庭聚會", location: "楊淑娟姊妹宅" },
+    { date: "5/09(六)", time: "19:00", location: "牧區聯合詩班練詩(崎頂)" },
+    { date: "5/16(六)", time: "全天", location: "上午季佈道會 / 下午臨時信徒會議" },
+    { date: "5/23(六)", time: "15:30", location: "宗教教育季活動 (一樓副堂)" },
+    { date: "6/06-07", time: "訪問", location: "青教組訪問(新林、林口教會)" },
+    { date: "7/19-21", time: "三天兩夜", location: "教會全體出訪花東 (6/20截止報名)" }
+  ],
+  // 財務摘要
+  finance: {
+    monthly: "3月份結餘：$938,173",
+    status: "2026年經常費 67 萬元目標已順利達成"
+  }
+};
 
 export const NEWS_DATA = {
-  receivedDoc: "2026/04/27 通知舉開大畢班成長營事宜(真臺牧字第115-0137號)",
-  meeting: "2026/04/22 職務會：受洗人員審查會",
+  receivedDoc: "2024/04/26 總會通知：第 10 屆資訊人員講習開始報名",
+  meeting: "2024/04/15 職務會：關於主機機房空調維護決議",
 };
 
 export const GROUPS_DATA = [
-  { id: 'g1', name: '資料組', leader: '王鴻志', status: '已確認', folder: 'https://drive.google.com/drive/folders/1YDc4fNyHQffbE-NC38-lfvzsQxFWnSY6?usp=sharing' },
-  { id: 'g2', name: '文工組', leader: '王鴻志', status: '待核備', folder: 'https://drive.google.com/drive/folders/1Ilerr_LXjVi4dn84WsAOeNGT8vRejRE0?usp=sharing' },
-  { id: 'g3', name: '書報組', leader: '張蓉惠', status: '已確認', folder: 'https://drive.google.com/drive/folders/1tnmy7oeYm9xBBaSmlYGjjsHJ9uAjUe3W?usp=sharing' },
-  { id: 'g4', name: '車管組', leader: '楊忠生', status: '已確認', folder: 'https://drive.google.com/drive/folders/1WZei0srHbcd7CWZ5VZrFtGb9RE701V2M?usp=sharing' },
+  { id: 'g1', name: '資料組', leader: '張三', folder: 'https://drive.google.com/...' },
+  { id: 'g2', name: '文工組', leader: '李四', folder: 'https://drive.google.com/...' },
+  { id: 'g3', name: '書報組', leader: '王五', folder: 'https://drive.google.com/...' },
+  { id: 'g4', name: '圖書組', leader: '趙六', folder: 'https://drive.google.com/...' },
 ];
 
 export const MEMBERSHIP_DATA = [
   { id: 'm4', name: '總會會籍系統 (MMS)', purpose: '總會專屬會籍管理系統入口', link: 'https://tjc-mms.tjc.org.tw/' },
   { id: 'm5', name: '教會實名制登入', purpose: '聚會實名制管理與簽到系統', link: 'https://checkin.tjc.church/admin/auth/login' },
-  { id: 'm1', name: '信徒會籍名簿 (表三/四)', purpose: '記錄信徒基本資料與遷移', link: '#' },
-  { id: 'm2', name: '遷出/入登記記錄', purpose: '追蹤信徒異動手續', link: '#' },
-  { id: 'm3', name: '年底信徒統計表', purpose: '每年呈報總會之基準資料', link: 'https://docs.google.com/spreadsheets/d/1Rd4_jrObHXZrvj_6GgFqg2CuDW0QW9bH/edit?usp=sharing&ouid=113791326732780317944&rtpof=true&sd=true' },
+  { id: 'm1', name: '西區公告系統', purpose: '西區辦事處公文公告', link: 'https://sites.google.com/site/tjcwest/home-1' },
 ];
-
 
 export const DOCUMENT_STRUCTURE = [
   {
-    category: '外部公文與公告系統',
-    description: '總會與辦事處之即時公文閱覽與公告平台。',
+    category: '外部公文與公告',
     items: [
-      { name: '總會公文閱覽系統', link: 'https://odms.tjc.org.tw/Doc/Default.aspx' },
-      { name: '西區辦事處公文公告', link: 'https://sites.google.com/site/tjcwest/home-1' }
-    ]
-  },
-  {
-    category: '收發公文雲端存檔',
-    description: '處理對外與對內的正式函文，依單位分類歸檔於雲端硬碟。',
-    items: [
-      { name: '總會公文存檔', link: 'https://drive.google.com/...' },
-      { name: '西區公文存檔', link: 'https://drive.google.com/...' },
-      { name: '地方教會公文', link: 'https://drive.google.com/...' }
-    ]
-  },
-  {
-    category: '各項會議記錄',
-    description: '包含教會各項重要議事紀錄，需永久保存。',
-    items: [
-      { name: '信徒會議', link: 'https://drive.google.com/drive/folders/1SPx8s-_eYBvXOVXf-LgmwrBOg1TmfPDu?usp=sharing' },
-      { name: '職務會紀錄', link: 'https://drive.google.com/drive/folders/1FZdnmfcKahiuIJv6YFN7eyb6-BdYSQwh?usp=sharing.' },
-      { name: '負責人會議', link: 'https://drive.google.com/drive/folders/1Ipu4X5j9gYvoMIFn6xXnHa-fahqPI_mI?usp=sharing' }
+      { name: '總會公文閱覽', link: 'https://odms.tjc.org.tw/Doc/Default.aspx' },
+      { name: '西區公文公告', link: 'https://sites.google.com/site/tjcwest/home-1' }
     ]
   }
 ];
 
 export const ASSETS_DATA = [
-  { id: 'a1', name: '教會公印', type: '印信', keeper: '資訊股', location: '保險箱' },
-  { id: 'a2', name: '行政管理電腦', type: '財產', keeper: '事務股', location: '辦公室' },
-  { id: 'a3', name: '不動產所有權狀影本', type: '文件', keeper: '事務股', location: '檔案櫃' },
+  { id: 'a1', name: '教會公印', keeper: '股負責' },
+  { id: 'a2', name: '行政管理電腦', keeper: '資訊股' },
 ];
+
