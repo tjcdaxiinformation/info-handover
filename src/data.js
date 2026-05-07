@@ -6,10 +6,13 @@ export const NEWS_DATA = [
 
 // --- 2. 組織組別清單 (Groups) ---
 export const GROUPS_DATA = [
-  { id: 'g1', name: '宣道組', leader: '林長老', folder: 'https://drive.google.com/drive/folders/1_example1' },
-  { id: 'g2', name: '教育組', leader: '陳執事', folder: 'https://drive.google.com/drive/folders/1_example2' },
-  { id: 'g3', name: '事務組', leader: '王執事', folder: 'https://drive.google.com/drive/folders/1_example3' },
-  { id: 'g4', name: '資訊股', leader: '王鴻志', folder: 'https://drive.google.com/drive/folders/1_example4' },
+  { id: 'g1', name: '教牧股', leader: '梁秀娟', folder: 'https://drive.google.com/drive/folders/1_example1' },
+  { id: 'g2', name: '宣道股', leader: '王鴻志', folder: 'https://drive.google.com/drive/folders/1_example1' },
+  { id: 'g3', name: '教育股', leader: '張蓉惠', folder: 'https://drive.google.com/drive/folders/1_example1' },
+  { id: 'g4', name: '事務股', leader: '楊忠生', folder: 'https://drive.google.com/drive/folders/1_example1' },
+  { id: 'g5', name: '資訊股', leader: '林茜葦', folder: 'https://drive.google.com/drive/folders/1_example2' },
+  { id: 'g6', name: '會計股', leader: '鍾霖恩', folder: 'https://drive.google.com/drive/folders/1_example3' },
+  { id: 'g7', name: '出納股', leader: '黃琬珊', folder: 'https://drive.google.com/drive/folders/1_example4' },
 ];
 
 // --- 3. 會籍系統連結 (Membership) ---
