@@ -45,7 +45,7 @@ export const MEMBERSHIP_DATA = [
   { id: 'm4', name: '總會會籍系統 (MMS)', purpose: '總會專屬會籍管理系統入口', link: 'https://tjc-mms.tjc.org.tw/' },
   { id: 'm5', name: '教會實名制登入', purpose: '聚會實名制管理與簽到系統', link: 'https://checkin.tjc.church/admin/auth/login' },
   { id: 'm1', name: '西區公告系統', purpose: '西區辦事處公文公告', link: 'https://sites.google.com/site/tjcwest/home-1' },
-];
+]; 
 
 export const DOCUMENT_STRUCTURE = [
   {
