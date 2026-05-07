@@ -1,64 +1,72 @@
-/**
- * 資訊股交接系統 - 資料庫 (2026/05/06 更新)
- */
-
-export const VEHICLE_REPORT_LINK = "https://forms.gle/your-google-form-url"; 
-
-// --- 本會宣布事項資料 ---
-export const CHURCH_ANNOUNCEMENTS = {
-  updateDate: "2026/05/06",
-  // 代禱名單
-  prayers: [
-    { name: "病中代禱", list: "李思親、宗福勇、李慧蘭、安月美、許甜心慕、胡秀蓮、葛秀娟、何美鳳、陳勇希、曾立學、鳳秋娥、陳桂英、陳進芳慕" },
-    { name: "傳道代禱", list: "張健二傳道(腦出血住院)、鍾清章傳道(修復重建)" },
-    { name: "聖事工", list: "全體教會牧養、福音宣道事工求主帶領" }
-  ],
-  // 近期活動日程
-  events: [
-    { date: "5/07(四)", time: "家庭聚會", location: "楊淑娟姊妹宅" },
-    { date: "5/09(六)", time: "19:00", location: "牧區聯合詩班練詩(崎頂)" },
-    { date: "5/16(六)", time: "全天", location: "上午季佈道會 / 下午臨時信徒會議" },
-    { date: "5/23(六)", time: "15:30", location: "宗教教育季活動 (一樓副堂)" },
-    { date: "6/06-07", time: "訪問", location: "青教組訪問(新林、林口教會)" },
-    { date: "7/19-21", time: "三天兩夜", location: "教會全體出訪花東 (6/20截止報名)" }
-  ],
-  // 財務摘要
-  finance: {
-    monthly: "3月份結餘：$938,173",
-    status: "2026年經常費 67 萬元目標已順利達成"
-  }
-};
-
-export const NEWS_DATA = {
-  receivedDoc: "2024/04/26 總會通知：第 10 屆資訊人員講習開始報名",
-  meeting: "2024/04/15 職務會：關於主機機房空調維護決議",
-};
-
-export const GROUPS_DATA = [
-  { id: 'g1', name: '資料組', leader: '張三', folder: 'https://drive.google.com/...' },
-  { id: 'g2', name: '文工組', leader: '李四', folder: 'https://drive.google.com/...' },
-  { id: 'g3', name: '書報組', leader: '王五', folder: 'https://drive.google.com/...' },
-  { id: 'g4', name: '圖書組', leader: '趙六', folder: 'https://drive.google.com/...' },
+// --- 1. 首頁快捷消息 (News) ---
+export const NEWS_DATA = [
+  { id: 1, title: "近期收文", content: "115年5月6日：總會通知關於各教會資訊設備維護與資安防護宣導公文。" },
+  { id: 2, title: "會議決議", content: "115年4月15日：職務會決議通過購置資訊股專用儲存設備 (NAS) 計畫。" }
 ];
 
-export const MEMBERSHIP_DATA = [
-  { id: 'm4', name: '總會會籍系統 (MMS)', purpose: '總會專屬會籍管理系統入口', link: 'https://tjc-mms.tjc.org.tw/' },
-  { id: 'm5', name: '教會實名制登入', purpose: '聚會實名制管理與簽到系統', link: 'https://checkin.tjc.church/admin/auth/login' },
-  { id: 'm1', name: '西區公告系統', purpose: '西區辦事處公文公告', link: 'https://sites.google.com/site/tjcwest/home-1' },
-]; 
+// --- 2. 組織組別清單 (Groups) ---
+export const GROUPS_DATA = [
+  { id: 'g1', name: '宣道組', leader: '林長老', folder: 'https://drive.google.com/drive/folders/1_example1' },
+  { id: 'g2', name: '教育組', leader: '陳執事', folder: 'https://drive.google.com/drive/folders/1_example2' },
+  { id: 'g3', name: '事務組', leader: '王執事', folder: 'https://drive.google.com/drive/folders/1_example3' },
+  { id: 'g4', name: '資訊股', leader: '王鴻志', folder: 'https://drive.google.com/drive/folders/1_example4' },
+];
 
+// --- 3. 會籍系統連結 (Membership) ---
+export const MEMBERSHIP_DATA = [
+  { id: 'm1', name: 'MMS 會籍管理系統', purpose: '總會標準會籍資料維護', link: 'https://mms.tjc.org.tw/' },
+  { id: 'm2', name: '本會會籍名簿', purpose: '大溪教會內部紙本/數位對照名冊', link: '#' },
+  { id: 'm3', name: '信徒基本資料卡', purpose: '新進信徒登錄表單', link: '#' },
+  { id: 'm4', name: '實名制登入系統', purpose: '教會活動簽到專用', link: '#' },
+  { id: 'm5', name: '指紋/生物識別', purpose: '門禁與特殊權限管理', link: '#' },
+];
+
+// --- 4. 公文分類結構 (Documents) ---
 export const DOCUMENT_STRUCTURE = [
   {
-    category: '外部公文與公告',
+    category: "總會 / 西區辦事處公文",
     items: [
-      { name: '總會公文閱覽', link: 'https://odms.tjc.org.tw/Doc/Default.aspx' },
-      { name: '西區公文公告', link: 'https://sites.google.com/site/tjcwest/home-1' }
+      { name: "115年度宣道計畫", link: "#" },
+      { name: "西區教牧人員異動公告", link: "#" }
+    ]
+  },
+  {
+    category: "本會會議紀錄",
+    items: [
+      { name: "職務會紀錄", link: "#" },
+      { name: "信徒代表大會紀錄", link: "#" },
+      { name: "各系負責人會議", link: "#" }
     ]
   }
 ];
 
+// --- 5. 財產與印信保管 (Assets) ---
 export const ASSETS_DATA = [
-  { id: 'a1', name: '教會公印', keeper: '股負責' },
-  { id: 'a2', name: '行政管理電腦', keeper: '資訊股' },
+  { id: 'a1', name: '教會公印 (大印)', keeper: '資訊股負責' },
+  { id: 'a2', name: 'iMac 工作站', keeper: '資訊股負責' },
+  { id: 'a3', name: '音響控制盤', keeper: '事務組' },
+  { id: 'a4', name: '公務車鑰匙', keeper: '事務組' },
 ];
+
+// --- 6. 外部工具連結 ---
+export const VEHICLE_REPORT_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSd_example/viewform";
+
+// --- 7. 本會宣布事項 (Announcements) ---
+export const CHURCH_ANNOUNCEMENTS = {
+  updateDate: "2026/05/07",
+  finance: {
+    monthly: "經常費結餘：NT$ 450,000",
+    status: "財務運作正常，準備進行第二季審核。"
+  },
+  prayers: [
+    { name: "為信徒身心靈", list: "請為身體欠安、年老體弱的弟兄姊妹代禱，祈求神賜下平安與康復。" },
+    { name: "為建堂工程", list: "請為後續維修工程與經費籌措代禱。" }
+  ],
+  events: [
+    { date: "05/10 (日)", time: "10:00", location: "本會大會堂", title: "母親節特別聚會" },
+    { date: "05/17 (日)", time: "14:00", location: "二樓會議室", title: "各系負責人月會" }
+  ],
+  // 剛才新增的連結
+  handoverLink: "https://drive.google.com/open?id=1w-VyxTfIEOC33tppyjoMTJFld-ZIXkqlvSRbt1L0_T0"
+};
 
