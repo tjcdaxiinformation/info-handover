@@ -6,13 +6,13 @@ export const NEWS_DATA = [
 
 // --- 2. 組織組別清單 (Groups) ---
 export const GROUPS_DATA = [
-  { id: 'g1', name: '教牧股', leader: '梁秀娟', folder: 'https://drive.google.com/drive/folders/1_example1' },
-  { id: 'g2', name: '宣道股', leader: '王鴻志', folder: 'https://drive.google.com/drive/folders/1_example1' },
-  { id: 'g3', name: '教育股', leader: '張蓉惠', folder: 'https://drive.google.com/drive/folders/1_example1' },
-  { id: 'g4', name: '事務股', leader: '楊忠生', folder: 'https://drive.google.com/drive/folders/1_example1' },
-  { id: 'g5', name: '資訊股', leader: '林茜葦', folder: 'https://drive.google.com/drive/folders/1_example2' },
-  { id: 'g6', name: '會計股', leader: '鍾霖恩', folder: 'https://drive.google.com/drive/folders/1_example3' },
-  { id: 'g7', name: '出納股', leader: '黃琬珊', folder: 'https://drive.google.com/drive/folders/1_example4' },
+  { id: 'g1', name: '教牧股', leader: '梁秀娟', folder: 'https://drive.google.com/drive/folders/18i_y6YClkT2BRVPAVDnonxEi5cooQnUL?usp=drive_link' },
+  { id: 'g2', name: '宣道股', leader: '王鴻志', folder: 'https://drive.google.com/drive/folders/12nrOUxHjYJwS85ZdB0rUIXlpEhav5e7n?usp=drive_link' },
+  { id: 'g3', name: '教育股', leader: '張蓉惠', folder: 'https://drive.google.com/drive/folders/173sLez0MpJxpbv-80Jlsl1DKjuGit5dl?usp=drive_link' },
+  { id: 'g4', name: '事務股', leader: '楊忠生', folder: 'https://drive.google.com/drive/folders/1xVDcA6DBDkdIZdL3D4tkGW8zHDapQCb-?usp=sharing' },
+  { id: 'g5', name: '資訊股', leader: '林茜葦', folder: 'https://drive.google.com/drive/folders/1oORI6DgGjfS_MipKnK9-o8D53apOXjV8?usp=drive_link' },
+  { id: 'g6', name: '會計股', leader: '鍾霖恩', folder: 'https://drive.google.com/drive/folders/1DzreuF3-7Iz79NpkdMbc3KjlNCPO9goS?usp=drive_link' },
+  { id: 'g7', name: '出納股', leader: '黃琬珊', folder: 'https://drive.google.com/drive/folders/1vnOoCFEI-4D7_X5Bj_pcw-up4HE-zgr5?usp=drive_link' },
 ];
 
 // --- 3. 會籍系統連結 (Membership) ---
@@ -21,23 +21,13 @@ export const MEMBERSHIP_DATA = [
   { id: 'm2', name: '本會會籍名簿', purpose: '大溪教會內部紙本/數位對照名冊', link: '#' },
   { id: 'm3', name: '信徒基本資料卡', purpose: '新進信徒登錄表單', link: '#' },
   { id: 'm4', name: '實名制登入系統', purpose: '教會活動簽到專用', link: '#' },
-  { id: 'm5', name: '指紋/生物識別', purpose: '門禁與特殊權限管理', link: '#' },
+  { id: 'm5', name: '新舊任負責人交接清冊', purpose: '交接項目列表存檔', link: 'https://docs.google.com/document/d/1w-VyxTfIEOC33tppyjoMTJFld-ZIXkqlvSRbt1L0_T0/edit?usp=drive_link' },
 ];
 
 // --- 4. 公文分類結構 (由單位與年份構成) ---
 export const DOCUMENT_STRUCTURE = [
   {
-    category: "總會 / 西區辦事處",
-    items: [
-      { name: "2026年度公文", link: "#" },
-      { name: "2025年度公文", link: "#" },
-      { name: "2024年度公文", link: "#" },
-      { name: "2023年度公文", link: "#" },
-      { name: "2022年度公文", link: "#" }
-    ]
-  },
-  {
-    category: "小區 / 牧區公文",
+    category: "總會公文",
     items: [
       { name: "2026年度公文", link: "#" },
       { name: "2025年度公文", link: "#" },
@@ -47,13 +37,42 @@ export const DOCUMENT_STRUCTURE = [
     ]
   },
   {
-    category: "地方教會 (大溪) 會議紀錄",
+    category: "西區辦事處公文",
     items: [
-      { name: "2026年度會議紀錄", link: "#" },
-      { name: "2025年度會議紀錄", link: "#" },
-      { name: "2024年度會議紀錄", link: "#" },
-      { name: "2023年度會議紀錄", link: "#" },
-      { name: "2022年度會議紀錄", link: "#" }
+      { name: "2026年度公文", link: "#" },
+      { name: "2025年度公文", link: "#" },
+      { name: "2024年度公文", link: "#" },
+      { name: "2023年度公文", link: "#" },
+      { name: "2022年度公文", link: "#" },
+    ]
+  },
+  {
+    category: "信徒會議紀錄",
+    items: [
+      { name: "2026年度信徒會議紀錄", link: "https://drive.google.com/drive/folders/1SPx8s-_eYBvXOVXf-LgmwrBOg1TmfPDu?usp=drive_link" },
+      { name: "2025年度信徒會議紀錄", link: "#" },
+      { name: "2024年度信徒會議紀錄", link: "#" },
+      { name: "2023年度信徒會議紀錄", link: "#" },
+      { name: "2022年度信徒會議紀錄", link: "#" }
+    ]
+  }
+    {
+    category: "職務會會議紀錄",
+    items: [
+      { name: "2026年度職務會會議紀錄", link: "https://drive.google.com/drive/folders/1FZdnmfcKahiuIJv6YFN7eyb6-BdYSQwh?usp=drive_link" },
+      { name: "2025年度職務會會議紀錄", link: "#" },
+      { name: "2024年度職務會會議紀錄", link: "#" },
+      { name: "2023年度職務會會議紀錄", link: "#" },
+      { name: "2022年度職務會會議紀錄", link: "#" }
+    ]
+  }  {
+    category: "負責人會會議紀錄",
+    items: [
+      { name: "2026年度負責人會會議紀錄", link: "https://drive.google.com/drive/folders/1Ipu4X5j9gYvoMIFn6xXnHa-fahqPI_mI?usp=drive_link" },
+      { name: "2025年度負責人會會議紀錄", link: "#" },
+      { name: "2024年度負責人會會議紀錄", link: "#" },
+      { name: "2023年度負責人會會議紀錄", link: "#" },
+      { name: "2022年度負責人會會議紀錄", link: "#" }
     ]
   }
 ];
@@ -62,7 +81,7 @@ export const DOCUMENT_STRUCTURE = [
 
 // --- 5. 財產與印信保管 (Assets) ---
 export const ASSETS_DATA = [
-  { id: 'a1', name: '教會公印 (大印)', keeper: '資訊股負責' },
+  { id: 'a1', name: '教會公印 (大印)', keeper: '資訊股負責',link: "https://drive.google.com/file/d/1EggnUxZ8YYDZkTPIBgOIy76SITsHWthV/view?usp=drive_link" },
   { id: 'a2', name: 'iMac 工作站', keeper: '資訊股負責' },
   { id: 'a3', name: '音響控制盤', keeper: '事務組' },
   { id: 'a4', name: '公務車鑰匙', keeper: '事務組' },
