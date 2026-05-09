@@ -24,24 +24,41 @@ export const MEMBERSHIP_DATA = [
   { id: 'm5', name: '指紋/生物識別', purpose: '門禁與特殊權限管理', link: '#' },
 ];
 
-// --- 4. 公文分類結構 (Documents) ---
+// --- 4. 公文分類結構 (由單位與年份構成) ---
 export const DOCUMENT_STRUCTURE = [
   {
-    category: "總會 / 西區辦事處公文",
+    category: "總會 / 西區辦事處",
     items: [
-      { name: "115年度宣道計畫", link: "#" },
-      { name: "西區教牧人員異動公告", link: "#" }
+      { name: "2026年度公文", link: "#" },
+      { name: "2025年度公文", link: "#" },
+      { name: "2024年度公文", link: "#" },
+      { name: "2023年度公文", link: "#" },
+      { name: "2022年度公文", link: "#" }
     ]
   },
   {
-    category: "本會會議紀錄",
+    category: "小區 / 牧區公文",
     items: [
-      { name: "職務會紀錄", link: "#" },
-      { name: "信徒代表大會紀錄", link: "#" },
-      { name: "各系負責人會議", link: "#" }
+      { name: "2026年度公文", link: "#" },
+      { name: "2025年度公文", link: "#" },
+      { name: "2024年度公文", link: "#" },
+      { name: "2023年度公文", link: "#" },
+      { name: "2022年度公文", link: "https://www.adobe.com/files/projects/urn:aaid:sc:AP:8038e8d5-a198-4e1b-9d56-4af20252e18d?openFrom=copy-link" }
+    ]
+  },
+  {
+    category: "地方教會 (大溪) 會議紀錄",
+    items: [
+      { name: "2026年度會議紀錄", link: "#" },
+      { name: "2025年度會議紀錄", link: "#" },
+      { name: "2024年度會議紀錄", link: "#" },
+      { name: "2023年度會議紀錄", link: "#" },
+      { name: "2022年度會議紀錄", link: "#" }
     ]
   }
 ];
+
+
 
 // --- 5. 財產與印信保管 (Assets) ---
 export const ASSETS_DATA = [
