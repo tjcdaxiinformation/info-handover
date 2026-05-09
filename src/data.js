@@ -55,8 +55,8 @@ export const DOCUMENT_STRUCTURE = [
       { name: "2023年度信徒會議紀錄", link: "#" },
       { name: "2022年度信徒會議紀錄", link: "#" }
     ]
-  }
-    {
+  },
+  {
     category: "職務會會議紀錄",
     items: [
       { name: "2026年度職務會會議紀錄", link: "https://drive.google.com/drive/folders/1FZdnmfcKahiuIJv6YFN7eyb6-BdYSQwh?usp=drive_link" },
@@ -65,7 +65,8 @@ export const DOCUMENT_STRUCTURE = [
       { name: "2023年度職務會會議紀錄", link: "#" },
       { name: "2022年度職務會會議紀錄", link: "#" }
     ]
-  }  {
+  },
+  {
     category: "負責人會會議紀錄",
     items: [
       { name: "2026年度負責人會會議紀錄", link: "https://drive.google.com/drive/folders/1Ipu4X5j9gYvoMIFn6xXnHa-fahqPI_mI?usp=drive_link" },
@@ -92,7 +93,7 @@ export const VEHICLE_REPORT_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSd_
 
 // --- 7. 本會宣布事項 (Announcements) ---
 export const CHURCH_ANNOUNCEMENTS = {
-  updateDate: "2026/05/07",
+  updateDate: "2026/05/09",
   finance: {
     monthly: "經常費結餘：NT$ 450,000",
     status: "財務運作正常，準備進行第二季審核。"
