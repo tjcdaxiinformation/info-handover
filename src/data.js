@@ -95,7 +95,7 @@ export const VEHICLE_REPORT_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSd_
 export const CHURCH_ANNOUNCEMENTS = {
   updateDate: "2026/05/09",
   finance: {
-    monthly: "經常費結餘：NT$ 450,000",
+    monthly: "經常費結餘：NT$ 938,173（3月份收支月報表）",
     status: "財務運作正常，準備進行第二季審核。"
   },
   prayers: [
