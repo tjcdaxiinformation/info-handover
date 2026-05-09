@@ -6,13 +6,13 @@ export const NEWS_DATA = [
 
 // --- 2. 組織組別清單 (Groups) ---
 export const GROUPS_DATA = [
-  { id: 'g1', name: '教牧股', leader: '梁秀娟', folder: 'https://drive.google.com/drive/folders/18i_y6YClkT2BRVPAVDnonxEi5cooQnUL?usp=drive_link' },
-  { id: 'g2', name: '宣道股', leader: '王鴻志', folder: 'https://drive.google.com/drive/folders/12nrOUxHjYJwS85ZdB0rUIXlpEhav5e7n?usp=drive_link' },
-  { id: 'g3', name: '教育股', leader: '張蓉惠', folder: 'https://drive.google.com/drive/folders/173sLez0MpJxpbv-80Jlsl1DKjuGit5dl?usp=drive_link' },
-  { id: 'g4', name: '事務股', leader: '楊忠生', folder: 'https://drive.google.com/drive/folders/1xVDcA6DBDkdIZdL3D4tkGW8zHDapQCb-?usp=sharing' },
-  { id: 'g5', name: '資訊股', leader: '林茜葦', folder: 'https://drive.google.com/drive/folders/1oORI6DgGjfS_MipKnK9-o8D53apOXjV8?usp=drive_link' },
-  { id: 'g6', name: '會計股', leader: '鍾霖恩', folder: 'https://drive.google.com/drive/folders/1DzreuF3-7Iz79NpkdMbc3KjlNCPO9goS?usp=drive_link' },
-  { id: 'g7', name: '出納股', leader: '黃琬珊', folder: 'https://drive.google.com/drive/folders/1vnOoCFEI-4D7_X5Bj_pcw-up4HE-zgr5?usp=drive_link' },
+  { id: 'g1', name: '教牧股', leader: '陳微慎執事to梁秀娟', folder: 'https://drive.google.com/drive/folders/18i_y6YClkT2BRVPAVDnonxEi5cooQnUL?usp=drive_link' },
+  { id: 'g2', name: '宣道股', leader: '梁秀娟to王鴻志', folder: 'https://drive.google.com/drive/folders/12nrOUxHjYJwS85ZdB0rUIXlpEhav5e7n?usp=drive_link' },
+  { id: 'g3', name: '教育股', leader: '談翠玉to張蓉惠', folder: 'https://drive.google.com/drive/folders/173sLez0MpJxpbv-80Jlsl1DKjuGit5dl?usp=drive_link' },
+  { id: 'g4', name: '事務股', leader: '鍾霖恩執事to楊忠生', folder: 'https://drive.google.com/drive/folders/1xVDcA6DBDkdIZdL3D4tkGW8zHDapQCb-?usp=sharing' },
+  { id: 'g5', name: '資訊股', leader: '王鴻志to林茜葦', folder: 'https://drive.google.com/drive/folders/1oORI6DgGjfS_MipKnK9-o8D53apOXjV8?usp=drive_link' },
+  { id: 'g6', name: '會計股', leader: '胡哲貞to鍾霖恩', folder: 'https://drive.google.com/drive/folders/1DzreuF3-7Iz79NpkdMbc3KjlNCPO9goS?usp=drive_link' },
+  { id: 'g7', name: '出納股', leader: '黃琬珊續任', folder: 'https://drive.google.com/drive/folders/1vnOoCFEI-4D7_X5Bj_pcw-up4HE-zgr5?usp=drive_link' },
 ];
 
 // --- 3. 會籍系統連結 (Membership) ---
